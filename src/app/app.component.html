@@ -1,15 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-  <h1>It is first lesson of Angular</h1>
-  <h1>It seems like "John Dere"</h1>
-</body>
-
-</html>
+<h1 (click)="isParagraphavisible = !isParagraphavisible; show()">
+    It is just index.html ({{ title | lowercase }}) {{ getDate() | date: 'dd MMMM yyyy' }} {{ 20.82 | currency }}
+</h1>
+<p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    Praesentium dolores illum soluta id eius! Ducimus voluptate
+    aperiam voluptatibus et exercitationem quisquam. Doloribus cum minus consectetur qui, nulla autem sit amet ullam
+    dolorum quas laboriosam beatae quibusdam officiis aut rem aspernatur ratione quia! Minima ipsa dicta facere vel
+    excepturi repellendus. Excepturi.</p>
+<ul *ngIf="isParagraphavisible">
+    <li *ngFor="let item of list; index as id">
+        {{item + ' with id ' + id}}
+    </li>
+</ul>
+<ng-container *ngFor="let user of roles; index as idx">
+    <div [ngSwitch]="user.role">
+        <div *ngSwitchCase="'Admin'">{{idx +1}}. Hello, you sign in as admin({{user.text}}). </div>
+        <div *ngSwitchCase="'User'">{{idx +1}}.Hello, you sign in as user({{user.text}}). </div>
+        <div *ngSwitchCase="'Coctumer'">{{idx +1}}.Hello, you sign in as costumer({{user.text}}). </div>
+    </div>
+</ng-container>
+<ng-container *ngFor="let user of roles; index as idx">
+    <div [ngStyle]="{ 'color' : getColor(user) }" [ngClass]="{ 'admin': user.role === 'Admin' }">
+        {{idx +1}}. Hello
+    </div>
+</ng-container>
